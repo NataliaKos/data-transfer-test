@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>DATA TRANSFER</h1>
+  
+  <div style="display: block">
+    <canvas baseChart id="myChart"
+                [data]="doughnutChartData"
+                [datasets]="datasets"
+                [labels]="doughnutChartLabels"
+                [legend]=false
+                [colors]="doughnutChartColors"
+                [chartType]="doughnutChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+  </div>

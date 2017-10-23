@@ -1,0 +1,38 @@
+<footer class="footer">
+  <div class="container">
+    <div class="row stats-panel">
+      <div class="col-xs-4">
+        <p class="small">audio</p>
+        <p>55%</p>
+      </div>
+      <div class="col-xs-4">
+        <p class="small">video</p>
+        <p>23%</p>
+      </div>
+      <div class="col-xs-4">
+        <p class="small">photo</p>
+        <p>17%</p>
+      </div>
+    </div>
+    <div class="row modals-panel">
+      <div class="col-xs-4">
+        <p (click)="openModal('upload')">
+          <i fa [name]="'cloud-upload'"></i>
+          <span>Upload Files</span>
+        </p>
+      </div>
+      <div class="col-xs-4">
+        <p (click)="openModal('share')">
+          <i fa [name]="'share-alt'"></i>
+          <span>Share Link</span>
+        </p>
+      </div>
+      <div class="col-xs-4">
+        <p (click)="openModal('backup')">
+          <i fa [name]="'list'"></i>
+          <span>View Files</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

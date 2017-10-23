@@ -1,0 +1,24 @@
+@import '../assets/scss/variables';
+/* Tabs styles */
+.nav-tabs {
+    li {
+        float: left;
+        margin-bottom: -1px;
+        width: 50%;
+        text-align: center;
+        font-size: 16px;
+        a {
+            border: 1px solid $light-blue;
+            background: $dark-blue-2;
+            border-radius: 7px 7px 0 0;
+            color: $white;
+            &.active, &.active:focus, &.active:hover {
+                color: #555;
+                cursor: default;
+                background-color: #fff;
+                border: 1px solid #ddd;
+                border-bottom-color: transparent;
+            }
+        }
+    }
+}

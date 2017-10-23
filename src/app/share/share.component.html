@@ -1,0 +1,45 @@
+<div class="modal-header">
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form class="form-inline" #shareForm="ngForm">
+    <div class="form-group" [ngClass]="'has-feedback'">
+      <label for="exampleInputAmount">Contacts</label>
+      <input #sendTo [(ngModel)]="share.to" name="share-to" type="email" id='share-to' class="emailinput ei form-control" value=''>
+      <span class="fa fa-plus form-control-feedback email-plus" aria-hidden="true"></span>
+    </div>
+    <div class="form-group" [ngClass]="{'has-success has-feedback': !shareSubject.invalid && (shareSubject.dirty || shareSubject.touched)}">
+      <label class="control-label" for="share-subject">Subject</label>
+      <input type="text" required 
+          [(ngModel)]="share.subject" 
+          class="form-control" 
+          id="share-subject"
+          name="share-subject"
+          placeholder="You can add a subject"
+          #shareSubject="ngModel">
+    <span *ngIf="!shareSubject.invalid && (shareSubject.dirty || shareSubject.touched)" class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="inputSuccess4">Message</label>
+      <textarea class="form-control" rows="3" placeholder="Leave your message here"></textarea>
+    </div>
+
+    <div class="send-wrapper">
+      <div class="save-copy">
+          <div class="checkbox">
+              <label>
+                <input type="checkbox" id="save-copy" value="save">
+                Save a copy
+              </label>
+            </div>
+      </div>{{ share.to }}
+      <div class="send-button">
+        <button type="button" class="btn btn-primary" [disabled]="!shareForm.form.valid" (click)="shareSend(shareForm.form.valid)"><i class="fa fa-play-circle" aria-hidden="true"></i> Send Mail</button>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+
+  </form>
+</div>

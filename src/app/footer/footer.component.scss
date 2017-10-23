@@ -1,0 +1,40 @@
+@import '../../assets/scss/variables';
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    .modals-panel {
+        background: $dark-blue;
+        color: $white;
+        text-align: center;
+        i {
+            font-size: 32px;
+            padding: 20px 20px 7px;
+        }
+        span {
+            font-size: 12px;
+            display: block;
+            text-transform: uppercase;
+        }
+    }
+    .stats-panel {
+        background: $light-blue;
+        text-align: center;
+        .col-xs-4 {
+            border-top: 5px solid $blue;
+            padding: 15px 14px;
+            border-right: 2px solid $white;
+            &:nth-child(2){
+                border-top: 5px solid $dark-blue;
+            }
+            p {
+                font-size: 32px;
+                margin: 0;
+                &.small {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}

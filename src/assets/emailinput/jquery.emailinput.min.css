@@ -1,0 +1,41 @@
+
+/*! jQuery email input - v1.0.5 - 2013-11-29
+* https://github.com/jongha/jquery.emailinput
+* Copyright (c) 2013 Jong-Ha Ahn; Licensed MIT */
+
+
+div.ei, input.ei {
+  min-height: 48px;
+  max-height: 48px;
+  border: solid 1px #0066d1;
+  background-color: #fff;
+  padding: 5px;
+  cursor: text;
+  overflow: auto
+}
+
+.ei_box {
+  display: block;
+  margin: 1px 2px;
+  padding: 7px 10px;
+  width: auto;
+  float: left;
+  border-radius: 5px;
+}
+
+span.ei_valid {
+  border-color: #0066d1;
+  background-color: #0066d1;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+span.ei_invalid {
+  border: 1px solid #b55e5e;
+  background-color: #fdf5f5;
+  cursor: pointer
+}
+
+.form-inline .form-control {
+  display: block;
+}
