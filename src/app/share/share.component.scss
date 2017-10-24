@@ -4,7 +4,8 @@
 }
 .form-control {
     border-color: $blue;
-    padding: 20px 15px;
+    padding: 10px 15px;
+    min-height: 45px;
 }
 .has-feedback label~.form-control-feedback {
     top: 25px;
