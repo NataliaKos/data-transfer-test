@@ -18,9 +18,15 @@ export class StatsComponent implements OnInit {
   showSpinner = true;
   totalSize: any = 0;
   totalFiles: any;
-  audio: any;
-  video: any;
-  photo: any;
+  audio: any = {
+    size: 0
+  }
+  video: any = {
+    size: 0
+  }
+  photo: any = {
+    size: 0
+  }
   freeSpace: any;
 
   constructor(
@@ -63,44 +69,68 @@ export class StatsComponent implements OnInit {
 
   ngOnInit() {
     this.uploads = this.uploadFileService.getUploads();
-    this.uploads.subscribe((value) => {
-      this.audio = {
-        "percent": 55
-      };
-      this.video = {
-        "percent": 23
-      };
-      this.photo = {
-        "percent": 17
-      };
-      this.freeSpace = 30;
 
-      this.doughnutChartData = [this.audio.percent, this.freeSpace, this.video.percent, this.photo.percent];
+    this.uploads.subscribe((value) => {
+      let audioFile = value.filter((file) => {
+        return file.type.indexOf('audio') !== -1;
+      })
+      audioFile.forEach(element => {
+        this.audio.size = this.audio.size + element.size;
+      });
+      
+      let videoFile = value.filter((file) => {
+        return file.type.indexOf('video') !== -1;
+      })
+      videoFile.forEach(element => {
+        this.video.size = this.video.size + element.size;
+      });
+
+      let photoFile = value.filter((file) => {
+        return file.type.indexOf('image') !== -1;
+      })
+      photoFile.forEach(element => {
+        this.photo.size = this.photo.size + element.size;
+      });
+
+      //Total free space == 150MB
+      this.freeSpace = 157286400 - this.audio.size - this.video.size - this.photo.size;
+
+      this.doughnutChartData = [this.audio.size, this.freeSpace, this.video.size, this.photo.size];
 
       this.showSpinner = false;
       
       Chart.pluginService.register({
         afterUpdate: function (chart) {
+          function sizeConvector(bytes: any){
+            if (bytes == 0) return '0 Bytes';
+            var k = 1024,
+              dm = 0,
+              sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+              i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+          }
+
+          // Count and convert total files size
           this.totalSize=0;
           for (let i=0; i < value.length; i++){
-            // console.log(this.totalSize, value[i].size)
             this.totalSize = this.totalSize + value[i].size;
           }
 
-          if (this.totalSize == 0) return '0 Bytes';
-          var k = 1024,
-            dm = 0,
-            sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
-            i = Math.floor(Math.log(this.totalSize) / Math.log(k));
-          this.totalSize = parseFloat((this.totalSize / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
-
           this.totalFiles = value.length === 1 ? "1 file" : value.length + " files";
+          this.totalSize = sizeConvector(this.totalSize);
+          // if (this.totalSize == 0) return '0 Bytes';
+          // var k = 1024,
+          //   dm = 0,
+          //   sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+          //   i = Math.floor(Math.log(this.totalSize) / Math.log(k));
+          // this.totalSize = parseFloat((this.totalSize / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+          // this.totalFiles = value.length === 1 ? "1 file" : value.length + " files";
 
+          // Text in the center set-up
           chart.config.options.elements.center = {
             "text": this.totalSize,
             "textNumber": this.totalFiles
           };
-          // console.log(chart.config.options.elements.center)
 
           if (chart.config.options.elements.center) {
             var helpers = Chart.helpers;

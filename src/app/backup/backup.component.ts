@@ -24,7 +24,7 @@ export class BackupComponent implements OnInit {
   ngOnInit() {
     this.uploads = this.uploadFileService.getUploads();
     this.uploads.subscribe((value) => {
-      
+      console.log(value)
     })
   }
 

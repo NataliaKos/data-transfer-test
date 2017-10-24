@@ -1,13 +1,14 @@
 @import '../../assets/scss/variables';
 
 .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+    margin-top: 50px;
     .modals-panel {
         background: $dark-blue;
         color: $white;
         text-align: center;
+        p {
+            margin: 0 0 22px;
+        }
         i {
             font-size: 32px;
             padding: 20px 20px 7px;

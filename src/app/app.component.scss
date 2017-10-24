@@ -1,4 +1,7 @@
 @import '../assets/scss/variables';
+.main-wrapper {
+    min-height: calc(100vh - 250px);
+}
 /* Tabs styles */
 .nav-tabs {
     li {

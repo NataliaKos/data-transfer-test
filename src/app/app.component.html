@@ -1,27 +1,27 @@
-<div class="container">
-    <div class="row">
-     
-      <div>
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs" role="tablist">
-          <li role="presentation">
-              <a [routerLink]="['stats']" routerLinkActive="active" role="tab">
-                  Diagram Stats
-                </a>
-          </li>
-          <li role="presentation">
-              <a [routerLink]="['report']" routerLinkActive="active" role="tab">
-                  Month Report
-                </a>
-          </li>
-        </ul>
-        <!-- Tab panes -->
-        <div class="tab-content">
-          <router-outlet></router-outlet>
-        </div>
+<div class="container main-wrapper">
+  <div class="row">
+
+    <div>
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation">
+          <a [routerLink]="['stats']" routerLinkActive="active" role="tab">
+            Diagram Stats
+          </a>
+        </li>
+        <li role="presentation">
+          <a [routerLink]="['report']" routerLinkActive="active" role="tab">
+            Month Report
+          </a>
+        </li>
+      </ul>
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <router-outlet></router-outlet>
       </div>
-
     </div>
-  </div>
 
-  <app-footer></app-footer>
+  </div>
+</div>
+
+<app-footer></app-footer>

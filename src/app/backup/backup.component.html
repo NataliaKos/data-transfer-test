@@ -12,7 +12,7 @@
           <th>File Type</th>
         </tr>
         <tr *ngFor="let upload of uploads | async">
-            <td>{{ upload.name }}</td>
+            <td><a href="{{ upload.url }}" target="_blank">{{ upload.name }}</a></td>
             <td>{{ upload.type }}</td>
         </tr>
       </table>
